@@ -152,20 +152,14 @@ La aplicación utiliza un volumen Docker (`db_data`) para asegurar que los datos
 ## 📱 Capturas de pantalla
 
 ### Gestión de Usuarios
-![Gestión de Usuarios](https://via.placeholder.com/800x400?text=Gesti%C3%B3n+de+Usuarios)
+![Gestión de Usuarios](https://i.postimg.cc/tghny5n2/Pasted-image.png)
 
 ### Gestión de Productos
-![Gestión de Productos](https://via.placeholder.com/800x400?text=Gesti%C3%B3n+de+Productos)
+![Gestión de Productos](https://i.postimg.cc/xC5kN1Rm/Pasted-image-2.png)
 
 ### Formularios
-![Formularios](https://via.placeholder.com/800x400?text=Formularios)
+![Formularios](https://i.postimg.cc/prdmfMG6/Pasted-image-3.png)
 
-### Arquitectura Docker
-![Arquitectura Docker](https://via.placeholder.com/800x400?text=Arquitectura+Docker+de+la+Aplicaci%C3%B3n)
-
-## 📄 Licencia
-
-Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE.md](LICENSE.md) para más detalles.
 
 ## 🧑‍💻 Autor
 
@@ -174,5 +168,5 @@ Desarrollado como práctica integradora para el curso de Programación 3.
 ---
 
 <div align="center">
-  <p>Hecho con ❤️ y React + Express + Docker</p>
+  <p>Hecho con React + Express + Docker</p>
 </div>
