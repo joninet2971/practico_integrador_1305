@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    container_name: backend
+    ports:
+      - "4000:4000"
+    volumes:
+      - db_data:/app/db
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    networks:
+      - app-network
+    user: "node"
+    command: node index.js
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - app-network
+    environment:
+      - BACKEND_URL=http://backend:4000
+
+volumes:
+  db_data:
+    driver: local
+
+networks:
+  app-network:
+    driver: bridge

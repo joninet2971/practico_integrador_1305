@@ -1,15 +1,17 @@
-# Sistema de Gestión - Práctica Integradora
+# Sistema de Gestión - Práctica Integradora (Dockerizado)
 
 <div align="center">
   <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" alt="React" />
   <img src="https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js" />
   <img src="https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB" alt="Express.js" />
   <img src="https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white" alt="Bootstrap" />
+  <img src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" />
+  <img src="https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white" alt="Nginx" />
 </div>
 
 ## 📋 Descripción
 
-Este sistema de gestión es una aplicación full-stack que permite administrar usuarios y productos. Desarrollado como práctica integradora para el curso de Programación 3, implementa operaciones CRUD completas con una interfaz atractiva y moderna.
+Este sistema de gestión es una aplicación full-stack que permite administrar usuarios y productos. Desarrollado como práctica integradora para el curso de Programación 3, implementa operaciones CRUD completas con una interfaz atractiva y moderna. La aplicación ha sido completamente dockerizada para facilitar su despliegue y ejecución.
 
 ## ✨ Características
 
@@ -20,6 +22,9 @@ Este sistema de gestión es una aplicación full-stack que permite administrar u
 - **Validación de formularios**
 - **Diseño responsive** adaptable a todos los dispositivos
 - **Mensajes informativos** claros al usuario
+- **Containerizado con Docker** para facilitar despliegue y desarrollo
+- **Persistencia de datos** mediante volúmenes de Docker
+- **Servidor web Nginx** para servir la aplicación frontend
 
 ## 🛠️ Tecnologías utilizadas
 
@@ -28,6 +33,7 @@ Este sistema de gestión es una aplicación full-stack que permite administrar u
 - **Express** - Framework web
 - **CORS** - Middleware para habilitar CORS
 - **JSON** - Almacenamiento de datos
+- **Docker** - Containerización
 
 ### Frontend
 - **React** - Biblioteca para construir interfaces
@@ -36,6 +42,12 @@ Este sistema de gestión es una aplicación full-stack que permite administrar u
 - **Bootstrap** - Framework CSS
 - **FontAwesome** - Iconos vectoriales
 - **Formik y Yup** - Manejo y validación de formularios
+- **Nginx** - Servidor web para producción
+- **Docker** - Containerización
+
+### Infraestructura
+- **Docker Compose** - Orquestación de contenedores
+- **Volúmenes Docker** - Persistencia de datos
 
 ## 📂 Estructura del proyecto
 
@@ -49,63 +61,77 @@ practico_integrador_1305/
 │   │   ├── productos.routes.js
 │   │   └── usuarios.routes.js
 │   ├── db/                 # Base de datos JSON
-│   └── index.js            # Punto de entrada del servidor
+│   ├── index.js            # Punto de entrada del servidor
+│   └── Dockerfile          # Configuración para contenedor Backend
 │
-└── frontend/               # Aplicación React
-    ├── public/             # Archivos públicos
-    └── src/                # Código fuente
-        ├── context/        # Contextos para estado global
-        │   ├── ProductoContext.jsx
-        │   └── UsuarioContext.jsx
-        ├── products/       # Componentes para productos
-        │   ├── ProductoForm.jsx
-        │   ├── ProductoView.jsx
-        │   └── index.jsx
-        ├── usuarios/       # Componentes para usuarios
-        │   ├── UsuarioForm.jsx
-        │   ├── UsuarioView.jsx
-        │   └── index.jsx
-        ├── utils/          # Utilidades
-        │   └── ExportToPdf.js
-        ├── App.jsx         # Componente principal
-        └── index.js        # Punto de entrada
+├── frontend/               # Aplicación React
+│   ├── public/             # Archivos públicos
+│   ├── src/                # Código fuente
+│   │   ├── context/        # Contextos para estado global
+│   │   │   ├── ProductoContext.jsx
+│   │   │   └── UsuarioContext.jsx
+│   │   ├── products/       # Componentes para productos
+│   │   │   ├── ProductoForm.jsx
+│   │   │   ├── ProductoView.jsx
+│   │   │   └── index.jsx
+│   │   ├── usuarios/       # Componentes para usuarios
+│   │   │   ├── UsuarioForm.jsx
+│   │   │   ├── UsuarioView.jsx
+│   │   │   └── index.jsx
+│   │   ├── utils/          # Utilidades
+│   │   │   └── ExportToPdf.js
+│   │   ├── App.jsx         # Componente principal
+│   │   └── index.js        # Punto de entrada
+│   ├── nginx.conf          # Configuración de Nginx
+│   └── Dockerfile          # Configuración para contenedor Frontend
+│
+└── docker-compose.yml      # Configuración de Docker Compose
 ```
 
 ## ⚙️ Instalación y ejecución
 
 ### Requisitos previos
-- Node.js (v14 o superior)
-- npm o yarn
+- Docker
+- Docker Compose
 
-### Backend
+### Ejecución con Docker Compose
 
-```bash
-# Navega al directorio del backend
-cd backend
-
-# Instala las dependencias
-npm install
-
-# Inicia el servidor en modo desarrollo
-npm run dev
-```
-
-El servidor estará disponible en http://localhost:4000
-
-### Frontend
+Para iniciar toda la aplicación con un solo comando:
 
 ```bash
-# Navega al directorio del frontend
-cd frontend
-
-# Instala las dependencias
-npm install
-
-# Inicia la aplicación React
-npm start
+# En la raíz del proyecto donde está el archivo docker-compose.yml
+docker-compose up -d
 ```
 
-La aplicación estará disponible en http://localhost:3000
+Esto creará y ejecutará los siguientes contenedores:
+- **Backend**: API Node.js en Express disponible en http://localhost:4000
+- **Frontend**: Aplicación React servida por Nginx disponible en http://localhost
+
+### Detener la aplicación
+
+```bash
+docker-compose down
+```
+
+### Reconstruir contenedores después de cambios
+
+```bash
+docker-compose down && docker-compose up -d --build
+```
+
+### Verificar logs
+
+```bash
+# Ver los logs del backend
+docker logs backend
+
+# Ver los logs del frontend
+docker logs frontend
+```
+
+### Persistencia de datos
+
+La aplicación utiliza un volumen Docker (`db_data`) para asegurar que los datos persistan incluso si los contenedores se detienen o se eliminan.
 
 ## 🚀 Endpoints API
 
@@ -134,6 +160,9 @@ La aplicación estará disponible en http://localhost:3000
 ### Formularios
 ![Formularios](https://via.placeholder.com/800x400?text=Formularios)
 
+### Arquitectura Docker
+![Arquitectura Docker](https://via.placeholder.com/800x400?text=Arquitectura+Docker+de+la+Aplicaci%C3%B3n)
+
 ## 📄 Licencia
 
 Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE.md](LICENSE.md) para más detalles.
@@ -145,5 +174,5 @@ Desarrollado como práctica integradora para el curso de Programación 3.
 ---
 
 <div align="center">
-  <p>Hecho con ❤️ y React + Express</p>
+  <p>Hecho con ❤️ y React + Express + Docker</p>
 </div>

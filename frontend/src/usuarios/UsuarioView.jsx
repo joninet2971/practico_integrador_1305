@@ -11,7 +11,7 @@ const UsuarioView = () => {
 
   useEffect(() => {
     getUsuarios();
-  }, []);
+  }, []);  // Quitamos getUsuarios de las dependencias para evitar bucle infinito
   
   const handleExportPdf = () => {
     const columns = ['ID', 'Nombre', 'Email', 'Usuario', 'Edad'];
@@ -35,7 +35,6 @@ const UsuarioView = () => {
       }
     } else {
       setConfirmDelete(id);
-      // Auto-reset del confirmDelete después de 3 segundos
       setTimeout(() => {
         setConfirmDelete(null);
       }, 3000);
@@ -54,7 +53,6 @@ const UsuarioView = () => {
   
   return (
     <div className="mb-4">
-      {/* Header con título, buscador y botones de acción */}
       <div className="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
         <div>
           <h2 className="mb-0 fw-bold text-primary">
