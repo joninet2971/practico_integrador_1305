@@ -1,0 +1,58 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nombre": "jonathan4",
+      "email": "joninet@msn.com",
+      "usuario": "joninet",
+      "edad": 21
+    },
+    {
+      "id": 2,
+      "nombre": "jonathan2",
+      "email": "joninet2@mdsn.coms",
+      "usuario": "joninet2",
+      "edad": 13
+    },
+    {
+      "nombre": "ignacio",
+      "email": "joninet@msnx.com",
+      "usuario": "joninet2",
+      "edad": 22,
+      "id": 3
+    },
+    {
+      "nombre": "jonathan2d",
+      "email": "gaston@gaston.com",
+      "usuario": "sdsdds",
+      "edad": 3,
+      "id": 4
+    }
+  ],
+  "productos": [
+    {
+      "id": 1,
+      "nombre": "Monitor",
+      "descripcion": "23 pulgadas",
+      "precio": 200000
+    },
+    {
+      "id": 2,
+      "nombre": "Mouse",
+      "descripcion": "Inalambrico",
+      "precio": 20000
+    },
+    {
+      "nombre": "Notebook",
+      "descripcion": "ddd",
+      "precio": 2323,
+      "id": 3
+    },
+    {
+      "nombre": "Silla gamer",
+      "descripcion": "silla",
+      "precio": 2333,
+      "id": 4
+    }
+  ]
+}
